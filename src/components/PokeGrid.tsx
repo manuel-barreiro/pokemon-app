@@ -24,7 +24,8 @@ import {
   Heading,
   HStack,
   Divider,
-  Progress
+  Progress,
+  Skeleton
 } from "@chakra-ui/react";
 import TypeBadge from "./PokeCard/TypeBadge";
 import axios from "axios";
@@ -52,22 +53,22 @@ async function loadPokemons(offSet: number): Promise<PokemonData[]> {
 function PokeGrid(): JSX.Element {
   const [offset, setOffset] = useState(0)
   const pokemonDataModal = useDisclosure()
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const [displayedPokemons, setdisplayedPokemons] = useState<PokemonData[]>([]);
   const [selectedPokemon, setSelectedPokemon] = useState<PokemonData | undefined>();
 
   useEffect(() => {
     async function fetchPokemons(offSet: number) {
-      setIsLoading(true)
+      setIsLoaded(false);
       const fetchedPokemons = await loadPokemons(offSet)
       setdisplayedPokemons((prev) => [...prev, ...fetchedPokemons]);
-      setIsLoading(false);
+      setIsLoaded(true);
     }
     fetchPokemons(offset)
     console.log(offset)
   }, [offset])
 
-  function handleOffset () {
+  function handlSetOffset () {
     setOffset((prev) => prev + 9)
   }
 
@@ -82,6 +83,11 @@ function PokeGrid(): JSX.Element {
           <Flex direction="column" alignItems="center" gap={5} >
             <SimpleGrid spacing="10" columns={{ base: 1, lg:3 }}>
               {displayedPokemons.map((pokemon, index) => (
+                <Skeleton
+                height='full'
+                isLoaded={isLoaded}
+                borderRadius="xl"
+              >
                 <Box
                   as="button"
                   key={pokemon.id}
@@ -99,9 +105,10 @@ function PokeGrid(): JSX.Element {
 
                   />
                 </Box>
+                </Skeleton>
               ))}
             </SimpleGrid>
-            <Button onClick={handleOffset}>
+            <Button onClick={handlSetOffset}>
               Hola
             </Button>
           </Flex>
