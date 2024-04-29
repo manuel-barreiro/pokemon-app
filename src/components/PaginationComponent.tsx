@@ -41,10 +41,10 @@ function PaginationComponent({
   return (
     <Stack spacing={4} direction='row' align='center'>
       <Button onClick={() => handlePrevPage(Number(page))}  colorScheme='teal' size='xs'>
-        Next
+        Previous
       </Button>
       <Button onClick={() => handleNextPage(Number(page))}  colorScheme='teal' size='xs'>
-        Previous
+        Next
       </Button>
 
     </Stack>
