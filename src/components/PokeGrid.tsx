@@ -25,10 +25,13 @@ import {
   HStack,
   Divider,
   Progress,
-  Skeleton
+  Skeleton,
+  Spinner
 } from "@chakra-ui/react";
 import TypeBadge from "./PokeCard/TypeBadge";
 import axios from "axios";
+import { useInView } from "react-intersection-observer";
+import InfiniteScroll from "./InfiniteScroll";
 
 async function loadPokemons(offSet: number): Promise<PokemonData[]> {
   const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=9&offset=${offSet}`)
@@ -51,11 +54,22 @@ async function loadPokemons(offSet: number): Promise<PokemonData[]> {
 } 
 
 function PokeGrid(): JSX.Element {
+  const [ref, inView] = useInView();
   const [offset, setOffset] = useState(0)
   const pokemonDataModal = useDisclosure()
   const [isLoaded, setIsLoaded] = useState(false);
   const [displayedPokemons, setdisplayedPokemons] = useState<PokemonData[]>([]);
   const [selectedPokemon, setSelectedPokemon] = useState<PokemonData | undefined>();
+
+  function handlSetOffset () {
+    setOffset((prev) => prev + 9)
+  }
+
+  useEffect(() => {
+    if (inView) {
+      handlSetOffset();
+    }
+  }, [inView]);
 
   useEffect(() => {
     async function fetchPokemons(offSet: number) {
@@ -67,10 +81,6 @@ function PokeGrid(): JSX.Element {
     fetchPokemons(offset)
     console.log(offset)
   }, [offset])
-
-  function handlSetOffset () {
-    setOffset((prev) => prev + 9)
-  }
 
   function handleViewPokemon(pokemon: PokemonData) {
     setSelectedPokemon(pokemon);
@@ -108,13 +118,10 @@ function PokeGrid(): JSX.Element {
                 </Skeleton>
               ))}
             </SimpleGrid>
-            <Button onClick={handlSetOffset}>
-              Hola
-            </Button>
+            <Spinner ref={ref} size='xl' />
           </Flex>
+          
         </Container>
-
-        
 
         <Modal {...pokemonDataModal} size={{ base: 'full', lg:'lg' }} motionPreset='slideInBottom' >
         <ModalOverlay bg='blackAlpha.300' backdropFilter='blur(10px) hue-rotate(90deg)' />
