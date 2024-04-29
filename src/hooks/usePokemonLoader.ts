@@ -12,7 +12,10 @@ export function usePokemonLoader(initialOffset: number): [PokemonData[], boolean
       setIsLoaded(false);
       const fetchedPokemons = await loadPokemons(offset);
       setDisplayedPokemons((prevPokemons) => [...prevPokemons, ...fetchedPokemons]);
-      setIsLoaded(true);
+      // Agregar un retraso de 500ms antes de establecer isLoaded a true
+      setTimeout(() => {
+        setIsLoaded(true);
+      }, 700);
     }
     fetchPokemons();
   }, [offset]);
