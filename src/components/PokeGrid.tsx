@@ -63,10 +63,6 @@ function PokeGrid({ displayedPokemons }: { displayedPokemons: PokemonData[] }): 
                 </Box>
               ))}
             </SimpleGrid>
-
-            <Button isLoading={false}>
-              Cargas más
-            </Button>
           </Flex>
         </Container>
 

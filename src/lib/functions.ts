@@ -2,7 +2,7 @@ import axios from "axios"
 import { Pokemon, PokemonData } from "../../types"
 
 export async function loadPokemons(): Promise<PokemonData[]> {
-  const { data } = await axios.get("https://pokeapi.co/api/v2/pokemon/?limit=30&offset=300")
+  const { data } = await axios.get("https://pokeapi.co/api/v2/pokemon/?limit=1302&offset=0")
   const results: Pokemon[] = data.results
   const pokemonPromises = results.map(async (pokemon: Pokemon ) => {
     const { data } = await axios.get(pokemon.url)
@@ -20,3 +20,26 @@ export async function loadPokemons(): Promise<PokemonData[]> {
   const pokemons = await Promise.all(pokemonPromises)
   return pokemons
 } 
+
+export function generatePaginationArrays(numberOfPages: number, rangeNum: number) {
+  let pagesOffset = [];
+  let pages_array = [];
+  for (let i = 1; i <= numberOfPages; i++) {
+    pages_array.push(i);
+    if (pages_array.length === rangeNum) {
+      pagesOffset.push(pages_array);
+      pages_array = [];
+      if (i === numberOfPages - (numberOfPages % rangeNum)) { 
+      for (let j: number = i; j <= numberOfPages; j++) {
+          pages_array.push(j);
+          if (j === numberOfPages) {
+              pagesOffset.push(pages_array);
+              pages_array = [];
+          }
+       }
+          i = numberOfPages
+      } 
+    }
+  }
+  return pagesOffset
+}
