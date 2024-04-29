@@ -31,27 +31,7 @@ import {
 import TypeBadge from "./PokeCard/TypeBadge";
 import axios from "axios";
 import { useInView } from "react-intersection-observer";
-import InfiniteScroll from "./InfiniteScroll";
-
-async function loadPokemons(offSet: number): Promise<PokemonData[]> {
-  const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=9&offset=${offSet}`)
-  const results: Pokemon[] = data.results
-  const pokemonPromises = results.map(async (pokemon: Pokemon ) => {
-    const { data } = await axios.get(pokemon.url)
-    const pokemonFilteredData: PokemonData = {
-      name: data.name,
-      id: data.id ,
-      height: data.height ,
-      weight: data.weight ,
-      stats: data.stats ,
-      types: data.types ,
-      img: data.sprites.other.home.front_shiny ,
-    }
-    return pokemonFilteredData
-  })
-  const pokemons = await Promise.all(pokemonPromises)
-  return pokemons
-} 
+import { loadPokemons } from "@/lib/functions";
 
 function PokeGrid(): JSX.Element {
   const [ref, inView] = useInView();
@@ -79,7 +59,6 @@ function PokeGrid(): JSX.Element {
       setIsLoaded(true);
     }
     fetchPokemons(offset)
-    console.log(offset)
   }, [offset])
 
   function handleViewPokemon(pokemon: PokemonData) {
