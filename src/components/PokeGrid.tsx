@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from "react";
-import { PokemonData } from "../../types"
+import { useState, useEffect } from "react";
+import { Pokemon, PokemonData } from "../../types"
 import PokeCard from "./PokeCard"
 import {
   Container,
@@ -27,11 +27,49 @@ import {
   Progress
 } from "@chakra-ui/react";
 import TypeBadge from "./PokeCard/TypeBadge";
+import axios from "axios";
 
-function PokeGrid({ displayedPokemons }: { displayedPokemons: PokemonData[] }): JSX.Element {
+async function loadPokemons(offSet: number): Promise<PokemonData[]> {
+  const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=9&offset=${offSet}`)
+  const results: Pokemon[] = data.results
+  const pokemonPromises = results.map(async (pokemon: Pokemon ) => {
+    const { data } = await axios.get(pokemon.url)
+    const pokemonFilteredData: PokemonData = {
+      name: data.name,
+      id: data.id ,
+      height: data.height ,
+      weight: data.weight ,
+      stats: data.stats ,
+      types: data.types ,
+      img: data.sprites.other.home.front_shiny ,
+    }
+    return pokemonFilteredData
+  })
+  const pokemons = await Promise.all(pokemonPromises)
+  return pokemons
+} 
+
+function PokeGrid(): JSX.Element {
+  const [offset, setOffset] = useState(0)
   const pokemonDataModal = useDisclosure()
-  const [pokemon, setPokemon] = useState([]);
-  const [selectedPokemon, setSelectedPokemon] = useState<PokemonData>();
+  const [isLoading, setIsLoading] = useState(false);
+  const [displayedPokemons, setdisplayedPokemons] = useState<PokemonData[]>([]);
+  const [selectedPokemon, setSelectedPokemon] = useState<PokemonData | undefined>();
+
+  useEffect(() => {
+    async function fetchPokemons(offSet: number) {
+      setIsLoading(true)
+      const fetchedPokemons = await loadPokemons(offSet)
+      setdisplayedPokemons((prev) => [...prev, ...fetchedPokemons]);
+      setIsLoading(false);
+    }
+    fetchPokemons(offset)
+    console.log(offset)
+  }, [offset])
+
+  function handleOffset () {
+    setOffset((prev) => prev + 9)
+  }
 
   function handleViewPokemon(pokemon: PokemonData) {
     setSelectedPokemon(pokemon);
@@ -63,8 +101,13 @@ function PokeGrid({ displayedPokemons }: { displayedPokemons: PokemonData[] }): 
                 </Box>
               ))}
             </SimpleGrid>
+            <Button onClick={handleOffset}>
+              Hola
+            </Button>
           </Flex>
         </Container>
+
+        
 
         <Modal {...pokemonDataModal} size={{ base: 'full', lg:'lg' }} motionPreset='slideInBottom' >
         <ModalOverlay bg='blackAlpha.300' backdropFilter='blur(10px) hue-rotate(90deg)' />
@@ -125,9 +168,10 @@ function PokeGrid({ displayedPokemons }: { displayedPokemons: PokemonData[] }): 
             
           </ModalBody>
         </ModalContent>
-      </Modal>
+        </Modal>
       </Flex>
 
+                 
   )
 }
 
