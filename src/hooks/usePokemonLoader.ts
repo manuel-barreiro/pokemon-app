@@ -1,18 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, SetStateAction, Dispatch } from 'react';
 import { loadPokemons } from '@/lib/functions';
 import { PokemonData } from '../../types';
 
-export function usePokemonLoader(): [PokemonData[], boolean, () => void, number[], (id: number) => void] {
+export function usePokemonLoader(): [PokemonData[], boolean, () => void] {
   const [offset, setOffset] = useState(0);
   const [displayedPokemons, setDisplayedPokemons] = useState<PokemonData[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [loadedCards, setLoadedCards] = useState<number[]>([]);
 
-  const handleCardLoad = (id: number) => {
-    if (!loadedCards.includes(id)) {
-      setLoadedCards(prevState => [...prevState, id]);
-    }
-  };
 
   useEffect(() => {
     async function fetchPokemons() {
@@ -22,7 +16,7 @@ export function usePokemonLoader(): [PokemonData[], boolean, () => void, number[
       // Agrego un retraso de 700ms antes de cambiar isLoaded a true, para mejorar la UX y que se vean bien los skeletons.
       setTimeout(() => {
         setIsLoaded(true);
-      }, 7500);
+      }, 1000);
     }
     fetchPokemons();
   }, [offset]);
@@ -31,5 +25,5 @@ export function usePokemonLoader(): [PokemonData[], boolean, () => void, number[
     setOffset((prevOffset) => prevOffset + 12);
   }
 
-  return [displayedPokemons, isLoaded, loadMore, loadedCards, handleCardLoad];
+  return [displayedPokemons, isLoaded, loadMore];
 }

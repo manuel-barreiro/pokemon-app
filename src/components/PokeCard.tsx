@@ -12,19 +12,9 @@ import CardImage from "./PokeCard/CardImage";
 import CardInfo from "./PokeCard/CardInfo";
 import { useEffect } from "react";
 
-interface PokeCardProps extends PokemonData {
-  onLoad?: () => void;
-}
-
-function PokeCard(pokemonData: PokeCardProps) {
+function PokeCard(pokemonData: PokemonData) {
   const mainType = pokemonData.types[0].type.name
-
-  useEffect(() => {
-    if (pokemonData.onLoad) {
-      pokemonData.onLoad();
-    }
-  }, []);
-
+  
   return (
       <Stack
         boxShadow="xl"
@@ -35,7 +25,6 @@ function PokeCard(pokemonData: PokeCardProps) {
         direction={{ base: 'row-reverse', lg:'column' }}
         bg={`${mainType}.cardBg`}
         cursor={"pointer"}
-        onLoad={pokemonData.onLoad}
       >
         <CardImage img={pokemonData.img} mainType={mainType} />
         
