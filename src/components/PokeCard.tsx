@@ -10,6 +10,7 @@ import {
 import { PokemonData } from "../../types"
 import CardImage from "./PokeCard/CardImage";
 import CardInfo from "./PokeCard/CardInfo";
+import { useEffect } from "react";
 
 interface PokeCardProps extends PokemonData {
   onLoad?: () => void;
@@ -17,6 +18,12 @@ interface PokeCardProps extends PokemonData {
 
 function PokeCard(pokemonData: PokeCardProps) {
   const mainType = pokemonData.types[0].type.name
+
+  useEffect(() => {
+    if (pokemonData.onLoad) {
+      pokemonData.onLoad();
+    }
+  }, [pokemonData.onLoad]);
 
   return (
       <Stack

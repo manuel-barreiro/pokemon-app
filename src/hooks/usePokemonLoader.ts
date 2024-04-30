@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { loadPokemons } from '@/lib/functions';
 import { PokemonData } from '../../types';
 
-export function usePokemonLoader(initialOffset: number): [PokemonData[], boolean, () => void, number[], (id: number) => void] {
-  const [offset, setOffset] = useState(initialOffset);
+export function usePokemonLoader(): [PokemonData[], boolean, () => void, number[], (id: number) => void] {
+  const [offset, setOffset] = useState(0);
   const [displayedPokemons, setDisplayedPokemons] = useState<PokemonData[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [loadedCards, setLoadedCards] = useState<number[]>([]);

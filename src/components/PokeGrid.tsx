@@ -13,12 +13,16 @@ import { usePokemonLoader } from '../hooks/usePokemonLoader';
 import { useInViewHandler } from '../hooks/useInViewHandler';
 import { useModal } from '../hooks/useModal';
 import PokeModal from "./PokeModal";
-import { useState } from "react";
+import { useEffect } from "react";
 
 function PokeGrid(): JSX.Element {
-  const [displayedPokemons, isLoaded, loadMore, loadedCards, handleCardLoad] = usePokemonLoader(0);
+  const [displayedPokemons, isLoaded, loadMore, loadedCards, handleCardLoad] = usePokemonLoader();
   const [isOpen, onClose, handleViewPokemon, selectedPokemon] = useModal();
   const ref = useInViewHandler(loadMore);
+
+  useEffect(() => {
+    console.log(loadedCards)
+  } ,[loadedCards])
 
   return (
     <Flex alignItems="center" minH="100vh" justifyContent="center">
@@ -40,7 +44,6 @@ function PokeGrid(): JSX.Element {
                       stats={pokemon.stats}
                       types={pokemon.types}
                       img={pokemon.img}
-                      onLoad={() => handleCardLoad(Number(pokemon.id))}
                     />
                   ) : (
                     <Skeleton height='full' isLoaded={isLoaded} borderRadius="xl">
