@@ -23,7 +23,7 @@ function PokeCard(pokemonData: PokeCardProps) {
     if (pokemonData.onLoad) {
       pokemonData.onLoad();
     }
-  }, [pokemonData.onLoad]);
+  }, []);
 
   return (
       <Stack
