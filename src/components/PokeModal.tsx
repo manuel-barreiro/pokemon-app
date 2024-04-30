@@ -13,13 +13,15 @@ import {
   Divider,
   Progress,
 } from "@chakra-ui/react";
+import CatchedButton from "./CatchedButton";
 import TypeBadge from "./PokeCard/TypeBadge";
 import { PokemonData } from "../../types";
+import { catchPokemon } from "@/lib/functions";
 
 interface PokeModalProps {
   isOpen: boolean;
   onClose: () => void;
-  selectedPokemon?: PokemonData | undefined;
+  selectedPokemon: PokemonData;
 }
 
 function PokeModal({isOpen, onClose, selectedPokemon}: PokeModalProps) {
@@ -28,8 +30,11 @@ function PokeModal({isOpen, onClose, selectedPokemon}: PokeModalProps) {
         <ModalOverlay bg='blackAlpha.300' backdropFilter='blur(10px) hue-rotate(90deg)' />
         <ModalContent borderTopRadius={100}>
           
-          <ModalHeader textTransform="capitalize" bg={`${selectedPokemon?.types[0].type.name}.badge`} p={5}>
+          <ModalHeader textTransform="capitalize" bg={`${selectedPokemon?.types[0].type.name}.badge`} p={5} display="flex" justifyContent="space-between">
             <Image onClick={() => onClose()} src={"/chevron-left.svg"} cursor="pointer" width={8} />
+            <div onClick={() => catchPokemon(selectedPokemon)}>
+              <CatchedButton text="Catch" />
+            </div>          
           </ModalHeader>
           
           <ModalBody w="full" margin={0} padding={0} >

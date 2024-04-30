@@ -1,5 +1,7 @@
 import axios from "axios"
 import { Pokemon, PokemonData } from "../../types"
+import { useRouter } from "next/router"
+
 
 // export async function loadAllPokemons(): Promise<PokemonData[]> {
 //   const { data } = await axios.get("https://pokeapi.co/api/v2/pokemon/?limit=1302&offset=0")
@@ -40,3 +42,15 @@ export async function loadPokemons(offSet: number): Promise<PokemonData[]> {
   const pokemons = await Promise.all(pokemonPromises)
   return pokemons
 } 
+
+export async function catchPokemon(pokemon: PokemonData) {
+  const res = await fetch('/api/myPokemons', 
+    { 
+      method: 'POST',
+      body: JSON.stringify(pokemon)
+    }
+  )
+
+  const data = await res.json()
+  console.log(data)
+}

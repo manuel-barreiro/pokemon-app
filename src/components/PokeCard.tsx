@@ -10,7 +10,6 @@ import {
 import { PokemonData } from "../../types"
 import CardImage from "./PokeCard/CardImage";
 import CardInfo from "./PokeCard/CardInfo";
-import { useEffect } from "react";
 
 function PokeCard(pokemonData: PokemonData) {
   const mainType = pokemonData.types[0].type.name
