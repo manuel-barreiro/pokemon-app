@@ -2,3 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+
+html {
+  background-color:hsla(0,28%,85%,1);
+  background-image:
+  radial-gradient(at 100% 0%, hsla(240,8%,40%,1) 0px, transparent 50%),
+  radial-gradient(at 0% 100%, hsla(339,70%,66%,1) 0px, transparent 50%);
+}
