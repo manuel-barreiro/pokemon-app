@@ -21,7 +21,7 @@ import { catchPokemon } from "@/lib/functions";
 interface PokeModalProps {
   isOpen: boolean;
   onClose: () => void;
-  selectedPokemon: PokemonData;
+  selectedPokemon?: PokemonData;
 }
 
 function PokeModal({isOpen, onClose, selectedPokemon}: PokeModalProps) {

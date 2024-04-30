@@ -43,7 +43,7 @@ export async function loadPokemons(offSet: number): Promise<PokemonData[]> {
   return pokemons
 } 
 
-export async function catchPokemon(pokemon: PokemonData) {
+export async function catchPokemon(pokemon: PokemonData | undefined) {
   const res = await fetch('/api/myPokemons', 
     { 
       method: 'POST',
