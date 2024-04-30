@@ -22,7 +22,7 @@ export function usePokemonLoader(): [PokemonData[], boolean, () => void, number[
       // Agrego un retraso de 700ms antes de cambiar isLoaded a true, para mejorar la UX y que se vean bien los skeletons.
       setTimeout(() => {
         setIsLoaded(true);
-      }, 1000);
+      }, 3500);
     }
     fetchPokemons();
   }, [offset]);
