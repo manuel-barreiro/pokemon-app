@@ -10,9 +10,12 @@ import {
 import { PokemonData } from "../../types"
 import CardImage from "./PokeCard/CardImage";
 import CardInfo from "./PokeCard/CardInfo";
-import Link from "next/link";
 
-function PokeCard(pokemonData: PokemonData) {
+interface PokeCardProps extends PokemonData {
+  onLoad?: () => void;
+}
+
+function PokeCard(pokemonData: PokeCardProps) {
   const mainType = pokemonData.types[0].type.name
 
   return (
@@ -25,6 +28,7 @@ function PokeCard(pokemonData: PokemonData) {
         direction={{ base: 'row-reverse', lg:'column' }}
         bg={`${mainType}.cardBg`}
         cursor={"pointer"}
+        onLoad={pokemonData.onLoad}
       >
         <CardImage img={pokemonData.img} mainType={mainType} />
         

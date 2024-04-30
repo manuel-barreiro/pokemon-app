@@ -13,9 +13,10 @@ import { usePokemonLoader } from '../hooks/usePokemonLoader';
 import { useInViewHandler } from '../hooks/useInViewHandler';
 import { useModal } from '../hooks/useModal';
 import PokeModal from "./PokeModal";
+import { useState } from "react";
 
 function PokeGrid(): JSX.Element {
-  const [displayedPokemons, isLoaded, loadMore] = usePokemonLoader(0);
+  const [displayedPokemons, isLoaded, loadMore, loadedCards, handleCardLoad] = usePokemonLoader(0);
   const [isOpen, onClose, handleViewPokemon, selectedPokemon] = useModal();
   const ref = useInViewHandler(loadMore);
 
@@ -24,30 +25,38 @@ function PokeGrid(): JSX.Element {
         <Container maxW="full">
           <Flex direction="column" alignItems="center" gap={5} >
             <SimpleGrid spacing="10" columns={{ base: 1, lg:3 }}>
-              {displayedPokemons.map((pokemon, index) => (
-                <Skeleton
-                height='full'
-                isLoaded={isLoaded}
-                borderRadius="xl"
-              >
+              {displayedPokemons.map((pokemon) => (
                 <Box
                   as="button"
                   key={pokemon.id}
                   onClick={() => handleViewPokemon(pokemon)}
                 >
-                  <PokeCard
-                    key={index}
-                    name={pokemon.name} 
-                    id={pokemon.id}
-                    height={pokemon.height}
-                    weight={pokemon.weight}
-                    stats={pokemon.stats}
-                    types={pokemon.types}
-                    img={pokemon.img}
-
-                  />
+                  {loadedCards.includes(Number(pokemon.id)) ? (
+                    <PokeCard
+                      name={pokemon.name} 
+                      id={pokemon.id}
+                      height={pokemon.height}
+                      weight={pokemon.weight}
+                      stats={pokemon.stats}
+                      types={pokemon.types}
+                      img={pokemon.img}
+                      onLoad={() => handleCardLoad(Number(pokemon.id))}
+                    />
+                  ) : (
+                    <Skeleton height='full' isLoaded={isLoaded} borderRadius="xl">
+                      <PokeCard
+                        name={pokemon.name} 
+                        id={pokemon.id}
+                        height={pokemon.height}
+                        weight={pokemon.weight}
+                        stats={pokemon.stats}
+                        types={pokemon.types}
+                        img={pokemon.img}
+                        onLoad={() => handleCardLoad(Number(pokemon.id))}
+                      />
+                    </Skeleton>
+                  )}
                 </Box>
-                </Skeleton>
               ))}
             </SimpleGrid>
             <Spinner ref={ref} size='xl' />
@@ -55,10 +64,9 @@ function PokeGrid(): JSX.Element {
           
         </Container>
         
-
         <PokeModal isOpen={isOpen} onClose={onClose} selectedPokemon={selectedPokemon}/>
         
-    </Flex>                 
+    </Flex>                             
   )
 }
 
