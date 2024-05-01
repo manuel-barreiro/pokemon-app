@@ -13,6 +13,7 @@ El objetivo principal de este proyecto fue mejorar y optimizar el template que m
     ![image](https://github.com/manuel-barreiro/pokemon-app/assets/103281038/dc44b926-ff6b-43f5-906d-5bb16ef1a75b)
 
 - **Rediseño de las Tarjetas y el Modal**: Se rediseñaron las tarjetas de Pokémon y el Modal para mejorar su apariencia visual y usabilidad. Se generó una paleta de colores única para cada tipo de Pokémon, lo que facilita la identificación rápida del tipo.
+- 
     ![image](https://github.com/manuel-barreiro/pokemon-app/assets/103281038/23a6c453-d54f-408f-9ab0-06e0cb8ecb81)
   
     ![image](https://github.com/manuel-barreiro/pokemon-app/assets/103281038/d9b0896f-8fdc-4282-8450-55c9daf8af9b)
@@ -26,6 +27,10 @@ En la siguiente URL pueden visitar el proyecto y atrapar sus propios pokemon: [h
 - **Migración al App Router de Next.js**: Se adoptó el nuevo router de Next.js para aprovechar las últimas características y adoptar el nuevo paradigma propuesto. Esto permite una gestión más eficiente de las rutas y una mejor experiencia de desarrollo.
   
 -  **Implementación de Dark Mode**: Para mejorar accesibilidad, se permite al usuario cambiar al tema que prefiera: claro u oscuro.
+-  
+     ![image](https://github.com/manuel-barreiro/pokemon-app/assets/103281038/4b9ee0f5-b772-4a07-b341-16e36a197b6e)
+   
+     ![image](https://github.com/manuel-barreiro/pokemon-app/assets/103281038/9443c2ea-6c6a-4887-87e5-b7b0af1b4af5)
 
 - **Organización del Código y Comentarios**: Se reorganizó el código para mejorar su estructura y legibilidad, por ejemplo abstrayendo la lógica a hooks. Se agregaron comentarios para explicar las diferentes partes del código y facilitar la comprensión y mantenimiento del mismo.
 
