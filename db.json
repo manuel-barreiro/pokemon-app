@@ -1,16 +1,18 @@
 {
     "myPokemonIds": [
-        6
+        2,
+        4,
+        3
     ],
     "myPokemon": [
         {
-            "name": "charizard",
-            "id": 6,
-            "height": 17,
-            "weight": 905,
+            "name": "ivysaur",
+            "id": 2,
+            "height": 10,
+            "weight": 130,
             "stats": [
                 {
-                    "base_stat": 78,
+                    "base_stat": 60,
                     "effort": 0,
                     "stat": {
                         "name": "hp",
@@ -18,7 +20,7 @@
                     }
                 },
                 {
-                    "base_stat": 84,
+                    "base_stat": 62,
                     "effort": 0,
                     "stat": {
                         "name": "attack",
@@ -26,7 +28,7 @@
                     }
                 },
                 {
-                    "base_stat": 78,
+                    "base_stat": 63,
                     "effort": 0,
                     "stat": {
                         "name": "defense",
@@ -34,15 +36,88 @@
                     }
                 },
                 {
-                    "base_stat": 109,
-                    "effort": 3,
+                    "base_stat": 80,
+                    "effort": 1,
                     "stat": {
                         "name": "special-attack",
                         "url": "https://pokeapi.co/api/v2/stat/4/"
                     }
                 },
                 {
-                    "base_stat": 85,
+                    "base_stat": 80,
+                    "effort": 1,
+                    "stat": {
+                        "name": "special-defense",
+                        "url": "https://pokeapi.co/api/v2/stat/5/"
+                    }
+                },
+                {
+                    "base_stat": 60,
+                    "effort": 0,
+                    "stat": {
+                        "name": "speed",
+                        "url": "https://pokeapi.co/api/v2/stat/6/"
+                    }
+                }
+            ],
+            "types": [
+                {
+                    "slot": 1,
+                    "type": {
+                        "name": "grass",
+                        "url": "https://pokeapi.co/api/v2/type/12/"
+                    }
+                },
+                {
+                    "slot": 2,
+                    "type": {
+                        "name": "poison",
+                        "url": "https://pokeapi.co/api/v2/type/4/"
+                    }
+                }
+            ],
+            "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/shiny/2.png"
+        },
+        {
+            "name": "charmander",
+            "id": 4,
+            "height": 6,
+            "weight": 85,
+            "stats": [
+                {
+                    "base_stat": 39,
+                    "effort": 0,
+                    "stat": {
+                        "name": "hp",
+                        "url": "https://pokeapi.co/api/v2/stat/1/"
+                    }
+                },
+                {
+                    "base_stat": 52,
+                    "effort": 0,
+                    "stat": {
+                        "name": "attack",
+                        "url": "https://pokeapi.co/api/v2/stat/2/"
+                    }
+                },
+                {
+                    "base_stat": 43,
+                    "effort": 0,
+                    "stat": {
+                        "name": "defense",
+                        "url": "https://pokeapi.co/api/v2/stat/3/"
+                    }
+                },
+                {
+                    "base_stat": 60,
+                    "effort": 0,
+                    "stat": {
+                        "name": "special-attack",
+                        "url": "https://pokeapi.co/api/v2/stat/4/"
+                    }
+                },
+                {
+                    "base_stat": 50,
                     "effort": 0,
                     "stat": {
                         "name": "special-defense",
@@ -50,8 +125,8 @@
                     }
                 },
                 {
-                    "base_stat": 100,
-                    "effort": 0,
+                    "base_stat": 65,
+                    "effort": 1,
                     "stat": {
                         "name": "speed",
                         "url": "https://pokeapi.co/api/v2/stat/6/"
@@ -65,16 +140,82 @@
                         "name": "fire",
                         "url": "https://pokeapi.co/api/v2/type/10/"
                     }
+                }
+            ],
+            "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/shiny/4.png"
+        },
+        {
+            "name": "venusaur",
+            "id": 3,
+            "height": 20,
+            "weight": 1000,
+            "stats": [
+                {
+                    "base_stat": 80,
+                    "effort": 0,
+                    "stat": {
+                        "name": "hp",
+                        "url": "https://pokeapi.co/api/v2/stat/1/"
+                    }
+                },
+                {
+                    "base_stat": 82,
+                    "effort": 0,
+                    "stat": {
+                        "name": "attack",
+                        "url": "https://pokeapi.co/api/v2/stat/2/"
+                    }
+                },
+                {
+                    "base_stat": 83,
+                    "effort": 0,
+                    "stat": {
+                        "name": "defense",
+                        "url": "https://pokeapi.co/api/v2/stat/3/"
+                    }
+                },
+                {
+                    "base_stat": 100,
+                    "effort": 2,
+                    "stat": {
+                        "name": "special-attack",
+                        "url": "https://pokeapi.co/api/v2/stat/4/"
+                    }
+                },
+                {
+                    "base_stat": 100,
+                    "effort": 1,
+                    "stat": {
+                        "name": "special-defense",
+                        "url": "https://pokeapi.co/api/v2/stat/5/"
+                    }
+                },
+                {
+                    "base_stat": 80,
+                    "effort": 0,
+                    "stat": {
+                        "name": "speed",
+                        "url": "https://pokeapi.co/api/v2/stat/6/"
+                    }
+                }
+            ],
+            "types": [
+                {
+                    "slot": 1,
+                    "type": {
+                        "name": "grass",
+                        "url": "https://pokeapi.co/api/v2/type/12/"
+                    }
                 },
                 {
                     "slot": 2,
                     "type": {
-                        "name": "flying",
-                        "url": "https://pokeapi.co/api/v2/type/3/"
+                        "name": "poison",
+                        "url": "https://pokeapi.co/api/v2/type/4/"
                     }
                 }
             ],
-            "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/shiny/6.png"
+            "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/shiny/3.png"
         }
     ]
 }

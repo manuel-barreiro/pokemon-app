@@ -1,5 +1,5 @@
 'use client'
-import { Flex, Box, HStack, Stack, Text, Image, useColorMode } from "@chakra-ui/react"
+import { Flex, Box, Image, useColorMode } from "@chakra-ui/react"
 import Link from "next/link"
 import ToggleThemeButton from "./ToggleThemeButton"
 
@@ -14,13 +14,15 @@ function NavBar() {
     >
       <Link href={'/'}>
         <Box>
-          <Image src={'/mbPokedex.png'} alt='logo' maxW={150}/>
+          <Image src={'/mbPokedex.png'} alt='logo' maxW={200}/>
         </Box>
       </Link>
-      <Link href={'/myPokemon'}>
-        <Image src={'/newPokeball.png'} w={{base: 10, md: 50}}  />
-      </Link>
-      <ToggleThemeButton />
+      <div className="flex gap-4 items-center">
+        <Link href={'/myPokemon'}>
+          <Image src={'/newPokeball.png'} w={{base: 10, md: 50}}  />
+        </Link>
+        <ToggleThemeButton />
+      </div>
     </Flex>
     )
 }
