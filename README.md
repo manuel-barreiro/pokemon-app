@@ -37,8 +37,9 @@ En la siguiente URL pueden visitar el proyecto y atrapar sus propios pokemon: [h
 - **Integración de la API interna**: Se agregó funcionalidad para mostrar los Pokémon capturados por el usuario, utilizando la base de datos JSON interna. Además, se muestran Toasts al usuario al atrapar o liberar pokemons, mostrando información personalizada del mismo.
 
      ![image](https://github.com/manuel-barreiro/pokemon-app/assets/103281038/23fb6322-1508-4b31-8182-f95c521b6d81)
-      ![image](https://github.com/manuel-barreiro/pokemon-app/assets/103281038/c3aa9918-f73f-473a-abf1-3654768220c1)
-      ![image](https://github.com/manuel-barreiro/pokemon-app/assets/103281038/b89dd4da-c1bf-41d3-9e62-1494d79a8abc)
+     ![image](https://github.com/manuel-barreiro/pokemon-app/assets/103281038/c3aa9918-f73f-473a-abf1-3654768220c1)
+     ![image](https://github.com/manuel-barreiro/pokemon-app/assets/103281038/161dbadc-58d4-489f-9823-c310ab2d0e84)
+
 
 
 
