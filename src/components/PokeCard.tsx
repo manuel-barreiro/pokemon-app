@@ -2,12 +2,6 @@
 
 import {
   Stack,
-  Text,
-  Image,
-  HStack,
-  Badge,
-  Heading,
-  Box,
   useColorMode,
 } from "@chakra-ui/react";
 import { PokemonData } from "../../types"

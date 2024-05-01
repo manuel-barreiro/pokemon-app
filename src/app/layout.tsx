@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Providers } from '../theme/providers'
+import { Providers } from '../theme/chakra-provider'
 import NavBar from "@/components/NavBar";
 import { Flex } from "@chakra-ui/react";
 

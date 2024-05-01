@@ -16,7 +16,6 @@ import { useInViewHandler } from '../hooks/useInViewHandler';
 import { useModal } from '../hooks/useModal';
 import PokeModal from "./PokeModal";
 import { useMyPokemon } from "@/hooks/useMyPokemon";
-import CatchAndFreeButton from "./CatchAndFreeButton";
 
 function PokeGrid(): JSX.Element {
   const [displayedPokemons, isLoaded, loadMore] = usePokemonLoader();

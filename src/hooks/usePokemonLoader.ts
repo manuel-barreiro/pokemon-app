@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import { loadPokemons } from '@/lib/functions';
 import { PokemonData } from '../../types';
 
+//Hook generar el infinite scroll, fetcheando los pokemons de la api incrementando el offset en 12.
 export function usePokemonLoader(): [PokemonData[], boolean, () => void] {
   const [offset, setOffset] = useState(0);
   const [displayedPokemons, setDisplayedPokemons] = useState<PokemonData[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
-
 
   useEffect(() => {
     async function fetchPokemons() {

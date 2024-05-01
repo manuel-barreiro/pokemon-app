@@ -1,6 +1,5 @@
 import { Text, Image, Button } from "@chakra-ui/react"
 
-
 function CatchAndFreeButton({ purpose }: { purpose?: string }) {
   return (
     <Button rounded='2xl' display="flex" gap={2} alignItems="center" w="auto" px={8}>

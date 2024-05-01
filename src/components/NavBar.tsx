@@ -17,13 +17,10 @@ function NavBar() {
           <Image src={'/mbPokedex.png'} alt='logo' maxW={150}/>
         </Box>
       </Link>
-
       <Link href={'/myPokemon'}>
         <Image src={'/newPokeball.png'} w={{base: 10, md: 50}}  />
       </Link>
-
       <ToggleThemeButton />
-
     </Flex>
     )
 }

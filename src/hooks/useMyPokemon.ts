@@ -15,12 +15,19 @@ interface UseMyPokemonReturn {
   handleFree: ({setMyPokemon, selectedPokemon, onClose}: HandleCatchAndFreeProps) => void
 }
 
+// Función que consulta la api interna, devolviendo los pokemons que tenemos en la json db.
 async function loadMyPokemon() {
   const res = await fetch('/api/myPokemon', { method: 'GET' })
   const data = await res.json()
   return data.myPokemon
 }
 
+
+// Este hook brinda lo siguiente:
+// -> myPokemon: estado que contiene es el array de pokemons atrapados
+// -> setMyPokemon: función para modificar el estado de myPokemon
+// -> handleCatch: función que gestiona atrapar el pokemon, es llamada al clickear el botón Catch en el PokeModal.
+// -> handleCatch: función que gestiona liberar el pokemon, es llamada al clickear el botón Free en el PokeModal.
 export function useMyPokemon(): UseMyPokemonReturn {
   const [myPokemon, setMyPokemon] = useState<PokemonData[]>([])
 
@@ -31,7 +38,7 @@ export function useMyPokemon(): UseMyPokemonReturn {
       onClose()
     }
   }
-  
+
   function handleFree({setMyPokemon, selectedPokemon, onClose}: HandleCatchAndFreeProps): void {
     if(selectedPokemon) {
       freePokemon(selectedPokemon)
@@ -39,7 +46,8 @@ export function useMyPokemon(): UseMyPokemonReturn {
       onClose()
     }
   }
-
+  
+  // Cargar los pokemons en la node-json-db al renderizar la pagina
   useEffect(() => {
     async function fetchMyPokemon() {
       const myPokemon = await loadMyPokemon()

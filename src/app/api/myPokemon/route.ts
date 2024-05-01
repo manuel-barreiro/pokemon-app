@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server"
 import { JsonDB, Config } from "node-json-db";
 import { PokemonData } from "../../../../types";
-import { error } from "console";
 
 const db = new JsonDB(new Config("db", true, true, "/"));
 
@@ -10,7 +9,7 @@ export async function GET(request: Request) {
     const myPokemon: PokemonData[] = await db.getData("/myPokemon");
     return NextResponse.json({ myPokemon }, { status: 200 })
   } catch (error) {
-      return NextResponse.json({ error: 'nashei' }, { status: 500 })
+      return NextResponse.json({ error }, { status: 500 })
   }
 }
 
