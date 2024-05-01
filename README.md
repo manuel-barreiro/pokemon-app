@@ -10,7 +10,7 @@ El objetivo principal de este proyecto fue mejorar y optimizar el template que m
 
 - **Lazy Loading con Skeleton Cards**: Se implementó el lazy loading para cargar cards de Pokémon de manera diferida, lo que mejora el rendimiento de la aplicación. Además, se mostraron esqueletos de carga para indicar visualmente al usuario que se están cargando datos.
 
-![image](https://github.com/manuel-barreiro/pokemon-app/assets/103281038/cfa1650e-2c94-43cf-ba97-c2e7eea6e49b)
+    ![image](https://github.com/manuel-barreiro/pokemon-app/assets/103281038/cfa1650e-2c94-43cf-ba97-c2e7eea6e49b)
 
 
 - **Rediseño de las Tarjetas y el Modal**: Se rediseñaron las tarjetas de Pokémon y el Modal para mejorar su apariencia visual y usabilidad. Se generó una paleta de colores única para cada tipo de Pokémon, lo que facilita la identificación rápida del tipo.
