@@ -1,9 +1,11 @@
 import PokeGrid from "@/components/PokeGrid";
+import { Flex } from "@chakra-ui/react";
 
 export default async function Home() {
+
   return (
-    <main className="flex flex-col items-center gap-10 py-28">
+    <Flex direction="column" alignItems="center" gap={10} py={32} >
       <PokeGrid />
-    </main>
+    </Flex>
   );
 }

@@ -12,19 +12,26 @@ import {
   HStack,
   Divider,
   Progress,
+  useToast,
 } from "@chakra-ui/react";
-import CatchedButton from "./CatchedButton";
+import CatchedButton from "./CatchAndFreeButton";
 import TypeBadge from "./PokeCard/TypeBadge";
 import { PokemonData } from "../../types";
-import { catchPokemon } from "@/lib/functions";
+import { SetStateAction } from "react";
+import { useMyPokemon } from "@/hooks/useMyPokemon";
+import { capitalizeString } from "@/lib/utils";
 
 interface PokeModalProps {
   isOpen: boolean;
   onClose: () => void;
-  selectedPokemon?: PokemonData;
+  selectedPokemon: PokemonData | undefined;
+  myPokemon: PokemonData[];
+  setMyPokemon: React.Dispatch<SetStateAction<PokemonData[]>>
 }
 
-function PokeModal({isOpen, onClose, selectedPokemon}: PokeModalProps) {
+function PokeModal({ isOpen, onClose, selectedPokemon, myPokemon, setMyPokemon }: PokeModalProps) {
+  const { handleCatch, handleFree } = useMyPokemon()
+  const toast = useToast()
   return (
     <Modal isOpen={isOpen} onClose={onClose} size={{ base: 'full', lg:'lg' }} motionPreset='slideInBottom' >
         <ModalOverlay bg='blackAlpha.300' backdropFilter='blur(10px) hue-rotate(90deg)' />
@@ -32,9 +39,32 @@ function PokeModal({isOpen, onClose, selectedPokemon}: PokeModalProps) {
           
           <ModalHeader textTransform="capitalize" bg={`${selectedPokemon?.types[0].type.name}.badge`} p={5} display="flex" justifyContent="space-between">
             <Image onClick={() => onClose()} src={"/chevron-left.svg"} cursor="pointer" width={8} />
-            <div onClick={() => catchPokemon(selectedPokemon)}>
-              <CatchedButton text="Catch" />
-            </div>          
+            {myPokemon?.some((poke) => Number(poke.id) === Number(selectedPokemon?.id)) ?
+            <div onClick={() => {
+              handleFree({setMyPokemon, selectedPokemon, onClose})
+              toast({
+                title: `You released ${capitalizeString(selectedPokemon?.name)}`,
+                description: "Catch it again before it goes far away!",
+                status: "info",
+                duration: 4000,
+                isClosable: true,
+              })
+              }}>
+              <CatchedButton purpose="free" />
+            </div> :
+            <div onClick={() => {
+              handleCatch({setMyPokemon, selectedPokemon, onClose})
+              toast({
+                title: `You caught ${capitalizeString(selectedPokemon?.name)}!`,
+                description: `One more ${capitalizeString(selectedPokemon?.types[0].type.name)} pokemon for your collection.`,
+                status: "info",
+                duration: 4000,
+                isClosable: true,
+              })
+              }}>
+              <CatchedButton purpose="catch" />
+            </div>
+            }         
           </ModalHeader>
           
           <ModalBody w="full" margin={0} padding={0} >

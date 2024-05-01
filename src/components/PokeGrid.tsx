@@ -7,21 +7,25 @@ import {
   Flex,
   Box,
   Skeleton,
-  Spinner
+  Spinner,
+  Button,
+  Image
 } from "@chakra-ui/react";
 import { usePokemonLoader } from '../hooks/usePokemonLoader';
 import { useInViewHandler } from '../hooks/useInViewHandler';
 import { useModal } from '../hooks/useModal';
 import PokeModal from "./PokeModal";
-import { useEffect, useState } from "react";
+import { useMyPokemon } from "@/hooks/useMyPokemon";
+import CatchAndFreeButton from "./CatchAndFreeButton";
 
 function PokeGrid(): JSX.Element {
   const [displayedPokemons, isLoaded, loadMore] = usePokemonLoader();
   const [isOpen, onClose, handleViewPokemon, selectedPokemon] = useModal();
+  const {myPokemon, setMyPokemon} = useMyPokemon()
   const ref = useInViewHandler(loadMore);
 
   return (
-    <Flex alignItems="center" minH="100vh" justifyContent="center">
+    <Flex alignItems="center" minH="200vh" justifyContent="center" >
         <Container maxW="full">
           <Flex direction="column" alignItems="center" gap={5} >
             <SimpleGrid spacing="10" columns={{ base: 1, lg:3 }}>
@@ -30,8 +34,14 @@ function PokeGrid(): JSX.Element {
                   as="button"
                   key={pokemon.id}
                   onClick={() => handleViewPokemon(pokemon)}
-                >
+                  position="relative"
+                >   
                     <Skeleton height='full' isLoaded={isLoaded} borderRadius="xl">
+                      {myPokemon?.some((myPoke) => Number(myPoke.id) === Number(pokemon.id)) &&
+                        <Box position="absolute" top="5%" right={{base:"2%", md:"5%"}} >
+                          <Image src={'/newPokeBall.png'} w={{base: 10, md:50}} />
+                        </Box> 
+                      }   
                       <PokeCard
                         name={pokemon.name} 
                         id={pokemon.id}
@@ -50,10 +60,11 @@ function PokeGrid(): JSX.Element {
           
         </Container>
         
-        <PokeModal isOpen={isOpen} onClose={onClose} selectedPokemon={selectedPokemon}/>
-        
-    </Flex>                             
+        <PokeModal isOpen={isOpen} onClose={onClose} selectedPokemon={selectedPokemon} myPokemon={myPokemon} setMyPokemon={setMyPokemon} />    
+    </Flex>
+                             
   )
 }
 
 export default PokeGrid
+

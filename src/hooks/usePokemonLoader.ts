@@ -1,4 +1,4 @@
-import { useState, useEffect, SetStateAction, Dispatch } from 'react';
+import { useState, useEffect } from 'react';
 import { loadPokemons } from '@/lib/functions';
 import { PokemonData } from '../../types';
 

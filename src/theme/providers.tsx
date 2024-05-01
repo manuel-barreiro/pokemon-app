@@ -7,5 +7,5 @@ import { colors } from "./colors";
 const theme = extendTheme({ colors });
 
 export function Providers({ children }: { children: React.ReactNode }) {
-  return <ChakraProvider theme={theme}>{children}</ChakraProvider>
+  return <ChakraProvider theme={theme} toastOptions={{ defaultOptions: { position: 'bottom' } }}>{children}</ChakraProvider>
 }

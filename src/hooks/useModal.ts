@@ -4,7 +4,7 @@ import { PokemonData } from '../../types';
 
 export function useModal(): [boolean, () => void, (pokemon: PokemonData) => void, PokemonData | undefined] {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [selectedPokemon, setSelectedPokemon] = useState<PokemonData | undefined>();
+  const [selectedPokemon, setSelectedPokemon] = useState<PokemonData>();
 
   function handleViewPokemon(pokemon: PokemonData) {
     setSelectedPokemon(pokemon);
