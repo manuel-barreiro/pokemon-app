@@ -40,10 +40,9 @@ En la siguiente URL pueden visitar el proyecto y atrapar sus propios pokemon: [h
      ![image](https://github.com/manuel-barreiro/pokemon-app/assets/103281038/c3aa9918-f73f-473a-abf1-3654768220c1)
      ![image](https://github.com/manuel-barreiro/pokemon-app/assets/103281038/161dbadc-58d4-489f-9823-c310ab2d0e84)
 
-
-
-
 - **Optimización del diseño responsive**: Se realizaron ajustes para garantizar una experiencia consistente en diferentes dispositivos y tamaños de pantalla.
+      ![image](https://github.com/manuel-barreiro/pokemon-app/assets/103281038/36932d56-5d49-4611-89bf-90fc244f60d4)
+      ![image](https://github.com/manuel-barreiro/pokemon-app/assets/103281038/b226202e-bdd1-4e3e-9652-8d5f1bfb9015)
 
 ## Levantá el proyecto en tu computadora
 
