@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className={inter.className} >
         <Providers>
           <NavBar />
-          <Flex bg="whitesmoke" w="full" justifyContent="center">
+          <Flex w="full" justifyContent="center">
             {children}
           </Flex>
         </Providers>

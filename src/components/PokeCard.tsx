@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Stack,
   Text,
@@ -6,12 +8,16 @@ import {
   Badge,
   Heading,
   Box,
+  useColorMode,
 } from "@chakra-ui/react";
 import { PokemonData } from "../../types"
 import CardImage from "./PokeCard/CardImage";
 import CardInfo from "./PokeCard/CardInfo";
 
+
+
 function PokeCard(pokemonData: PokemonData) {
+  const { colorMode } = useColorMode()
   const mainType = pokemonData.types[0].type.name
   
   return (
@@ -20,9 +26,9 @@ function PokeCard(pokemonData: PokemonData) {
         w={{ base: 'full', lg:'250px' }}
         borderRadius="xl"
         alignItems="center"
-        justifyContent={{ base: 'space-between', md:'center' }}
+        justifyContent={{ base: 'space-between', lg:'center' }}
         direction={{ base: 'row-reverse', lg:'column' }}
-        bg={`${mainType}.cardBg`}
+        bg={colorMode === 'light' ? `${mainType}.cardBg` : 'gray.700'}
         cursor={"pointer"}
       >
         <CardImage img={pokemonData.img} mainType={mainType} />
