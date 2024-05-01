@@ -13,9 +13,9 @@ El objetivo principal de este proyecto fue mejorar y optimizar el template que m
     ![image](https://github.com/manuel-barreiro/pokemon-app/assets/103281038/dc44b926-ff6b-43f5-906d-5bb16ef1a75b)
 
 - **Rediseño de las Tarjetas y el Modal**: Se rediseñaron las tarjetas de Pokémon y el Modal para mejorar su apariencia visual y usabilidad. Se generó una paleta de colores única para cada tipo de Pokémon, lo que facilita la identificación rápida del tipo.
-    ![image](https://github.com/manuel-barreiro/pokemon-app/assets/103281038/23a6c453-d54f-408f-9ab0-06e0cb8ecb81) ![image](https://github.com/manuel-barreiro/pokemon-app/assets/103281038/7cbb1f3d-b2de-4092-8bcb-0b321f0240e3)
-
-
+    ![image](https://github.com/manuel-barreiro/pokemon-app/assets/103281038/23a6c453-d54f-408f-9ab0-06e0cb8ecb81)
+  
+    ![image](https://github.com/manuel-barreiro/pokemon-app/assets/103281038/d9b0896f-8fdc-4282-8450-55c9daf8af9b)
 
 - **Deploy de demo del proyecto utilizando localStorage**: Para suplantar el uso de la base de datos local y las API requests, me pareció buena idea implementar localStorage como método de guardar los pokemon que vas atrapando. Esto es muy simple y tiene la ventaja de que al refrescar la página la información es consistente y no se pierde. Realicé el deploy del mismo en Vercel.
 
