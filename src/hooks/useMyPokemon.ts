@@ -1,9 +1,6 @@
 import { SetStateAction, useEffect, useState } from "react";
 import { PokemonData } from "../../types";
 import { catchPokemon, freePokemon } from "@/lib/functions";
-import { useToast } from '@chakra-ui/react'
-
-
 
 interface HandleCatchAndFreeProps {
   setMyPokemon: React.Dispatch<SetStateAction<PokemonData[]>>,
