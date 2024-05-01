@@ -19,7 +19,7 @@ function NavBar() {
       </Link>
 
       <Link href={'/myPokemon'}>
-        <Image src={'/newPokeBall.png'} w={{base: 10, md:50}}  />
+        <Image src={'/newPokeball.png'} w={{base: 10, md: 50}}  />
       </Link>
 
       <ToggleThemeButton />
