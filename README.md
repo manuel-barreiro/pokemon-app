@@ -34,9 +34,13 @@ En la siguiente URL pueden visitar el proyecto y atrapar sus propios pokemon: [h
 
 - **Organización del Código y Comentarios**: Se reorganizó el código para mejorar su estructura y legibilidad, por ejemplo abstrayendo la lógica a hooks. Se agregaron comentarios para explicar las diferentes partes del código y facilitar la comprensión y mantenimiento del mismo.
 
-- **Integración de la API interna**: Se agregó funcionalidad para mostrar los Pokémon capturados por el usuario, utilizando la base de datos JSON interna.
+- **Integración de la API interna**: Se agregó funcionalidad para mostrar los Pokémon capturados por el usuario, utilizando la base de datos JSON interna. Además, se muestran Toasts al usuario al atrapar o liberar pokemons, mostrando información personalizada del mismo.
 
-- **Integración completa de la API de PokeAPI**: Se completó la integración con la API de PokeAPI para satisfacer todos los requisitos del enunciado original.
+     ![image](https://github.com/manuel-barreiro/pokemon-app/assets/103281038/23fb6322-1508-4b31-8182-f95c521b6d81)
+      ![image](https://github.com/manuel-barreiro/pokemon-app/assets/103281038/c3aa9918-f73f-473a-abf1-3654768220c1)
+      ![image](https://github.com/manuel-barreiro/pokemon-app/assets/103281038/b89dd4da-c1bf-41d3-9e62-1494d79a8abc)
+
+
 
 - **Optimización del diseño responsive**: Se realizaron ajustes para garantizar una experiencia consistente en diferentes dispositivos y tamaños de pantalla.
 
